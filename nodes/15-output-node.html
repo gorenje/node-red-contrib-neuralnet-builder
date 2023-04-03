@@ -1,0 +1,32 @@
+<script type="text/javascript">
+  RED.nodes.registerType('nnb-output-node',{ ...window.mmDefaults, ...{
+    color: '#efefef',
+    icon: "subflow.svg",
+    paletteLabel: 'Output',
+    defaults: {
+      name: {
+        value:""
+      },
+      weights: {
+        value: {}
+      }
+    },
+
+    label: function() {
+      return (this.name || this._def.paletteLabel);
+    },
+  }});
+</script>
+
+<script type="text/html" data-template-name="nnb-output-node">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row node-input-weights-row"></div>
+</script>
+
+<script type="text/html" data-help-name="nnb-output-node">
+    <p>An output node placed at the end of a Neural Network.</p>
+</script>

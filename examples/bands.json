@@ -1,0 +1,423 @@
+[
+    {
+        "id": "34dff9962b6572f6",
+        "type": "tab",
+        "label": "Balance and Scale",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d887e4a6d16c0d1e",
+        "type": "comment",
+        "z": "34dff9962b6572f6",
+        "name": "About the dataset --> https://archive.ics.uci.edu/ml/datasets/Balance+Scale",
+        "info": "",
+        "x": 378,
+        "y": 73,
+        "wires": []
+    },
+    {
+        "id": "afa4c52b22a8eff4",
+        "type": "csv",
+        "z": "34dff9962b6572f6",
+        "name": "dataset - 625 entries",
+        "sep": ",",
+        "hdrin": false,
+        "hdrout": "all",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "ClassName,LeftWeight,LeftDistance,RightWeight,RightDistance",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 750,
+        "y": 265,
+        "wires": [
+            [
+                "52b2cf3ec2c6964a"
+            ]
+        ]
+    },
+    {
+        "id": "11ba6dd0cb9df461",
+        "type": "http request",
+        "z": "34dff9962b6572f6",
+        "name": "https://archive.ics.uci.edu/ml/machine-learning-databases/balance-scale/balance-scale.data",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/balance-scale/balance-scale.data",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 463,
+        "y": 202.99996948242188,
+        "wires": [
+            [
+                "afa4c52b22a8eff4"
+            ]
+        ],
+        "info": "Details available here:\n\nhttps://archive.ics.uci.edu/ml/datasets/Abalone\n\nData:\n\nhttps://archive.ics.uci.edu/ml/machine-learning-databases/abalone/\n\n"
+    },
+    {
+        "id": "87b93bfb04053c01",
+        "type": "inject",
+        "z": "34dff9962b6572f6",
+        "name": "Load dataset",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 199,
+        "y": 142.99998474121094,
+        "wires": [
+            [
+                "11ba6dd0cb9df461"
+            ]
+        ]
+    },
+    {
+        "id": "52b2cf3ec2c6964a",
+        "type": "function",
+        "z": "34dff9962b6572f6",
+        "name": "remap class name & set topic",
+        "func": "var _classNameMap = {\n    'B': 0,\n    'L': 1,\n    'R': 2\n};\n\nfor ( var idx = 0; idx < msg.payload.length ; idx++ ) {\n    msg.payload[idx].ClassName = _classNameMap[msg.payload[idx].ClassName]\n}\n\nmsg.topic = \"dataset\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1068,
+        "y": 247,
+        "wires": [
+            [
+                "a8a8262399bb5508"
+            ]
+        ]
+    },
+    {
+        "id": "a8a8262399bb5508",
+        "type": "change",
+        "z": "34dff9962b6572f6",
+        "name": "set training and test sizes",
+        "rules": [
+            {
+                "t": "set",
+                "p": "training_size",
+                "pt": "msg",
+                "to": "500",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "testing_size",
+                "pt": "msg",
+                "to": "50",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1330,
+        "y": 188.33331298828125,
+        "wires": [
+            [
+                "fa90305f76aa8466"
+            ]
+        ]
+    },
+    {
+        "id": "232760b445acef87",
+        "type": "nnb-input-node",
+        "z": "34dff9962b6572f6",
+        "name": "LeftWeight",
+        "x": 418,
+        "y": 559,
+        "wires": [
+            [
+                "30d4ccdc5ba2766c",
+                "a36718dcaf101c19",
+                "90c0f7fdc23a7e5b"
+            ]
+        ]
+    },
+    {
+        "id": "34ad3ddc86cfb74b",
+        "type": "nnb-input-node",
+        "z": "34dff9962b6572f6",
+        "name": "RightWeight",
+        "x": 418,
+        "y": 635,
+        "wires": [
+            [
+                "30d4ccdc5ba2766c",
+                "a36718dcaf101c19",
+                "90c0f7fdc23a7e5b"
+            ]
+        ]
+    },
+    {
+        "id": "e0ec19b8bb90dad1",
+        "type": "nnb-input-node",
+        "z": "34dff9962b6572f6",
+        "name": "LeftDistance",
+        "x": 418,
+        "y": 709,
+        "wires": [
+            [
+                "30d4ccdc5ba2766c",
+                "a36718dcaf101c19",
+                "90c0f7fdc23a7e5b"
+            ]
+        ]
+    },
+    {
+        "id": "46e624d6d4f1d0bc",
+        "type": "nnb-input-node",
+        "z": "34dff9962b6572f6",
+        "name": "RightDistance",
+        "x": 408,
+        "y": 786,
+        "wires": [
+            [
+                "30d4ccdc5ba2766c",
+                "a36718dcaf101c19",
+                "90c0f7fdc23a7e5b"
+            ]
+        ]
+    },
+    {
+        "id": "30d4ccdc5ba2766c",
+        "type": "nnb-layer-node",
+        "z": "34dff9962b6572f6",
+        "name": "",
+        "bias": 0,
+        "threshold": "-3",
+        "weights": {
+            "232760b445acef87": 0.353240680186266,
+            "34ad3ddc86cfb74b": -0.20025297753485893,
+            "e0ec19b8bb90dad1": -0.41900557166532515,
+            "46e624d6d4f1d0bc": 0.27112074075593773
+        },
+        "actfunct": "Erf",
+        "x": 714,
+        "y": 657,
+        "wires": [
+            [
+                "8d5fd29609d79b5a",
+                "f478775b6ad2eb92"
+            ]
+        ]
+    },
+    {
+        "id": "a36718dcaf101c19",
+        "type": "nnb-layer-node",
+        "z": "34dff9962b6572f6",
+        "name": "",
+        "bias": 0,
+        "threshold": "-3",
+        "weights": {
+            "34ad3ddc86cfb74b": -0.41696979633711506,
+            "232760b445acef87": -0.48219647009219613,
+            "e0ec19b8bb90dad1": -0.03370482913916706,
+            "46e624d6d4f1d0bc": 0.08060431048968719
+        },
+        "actfunct": "BentIdentity",
+        "x": 744,
+        "y": 732,
+        "wires": [
+            [
+                "8d5fd29609d79b5a",
+                "f478775b6ad2eb92"
+            ]
+        ]
+    },
+    {
+        "id": "8d5fd29609d79b5a",
+        "type": "nnb-output-node",
+        "z": "34dff9962b6572f6",
+        "name": "ClassName",
+        "weights": {
+            "a36718dcaf101c19": -0.43776638637215215,
+            "30d4ccdc5ba2766c": -0.45895053395755947,
+            "90c0f7fdc23a7e5b": 2,
+            "f478775b6ad2eb92": 0.2981832964451465
+        },
+        "x": 1284,
+        "y": 663,
+        "wires": [
+            [
+                "c56bc1ef5fddc752"
+            ]
+        ]
+    },
+    {
+        "id": "c56bc1ef5fddc752",
+        "type": "nnb-backprop",
+        "z": "34dff9962b6572f6",
+        "name": "",
+        "scope": [
+            "8d5fd29609d79b5a"
+        ],
+        "x": 1571,
+        "y": 430,
+        "wires": [
+            [
+                "fa90305f76aa8466"
+            ]
+        ]
+    },
+    {
+        "id": "fa90305f76aa8466",
+        "type": "nnb-trainer",
+        "z": "34dff9962b6572f6",
+        "name": "",
+        "scope": [
+            "232760b445acef87",
+            "34ad3ddc86cfb74b",
+            "e0ec19b8bb90dad1",
+            "46e624d6d4f1d0bc"
+        ],
+        "learningrate": "0.01",
+        "weightmin": "-0.5",
+        "weightmax": "0.5",
+        "x": 1570,
+        "y": 289,
+        "wires": [
+            [
+                "c56bc1ef5fddc752",
+                "72fa901e872ceb52"
+            ]
+        ]
+    },
+    {
+        "id": "060dbd8d79e7f5e4",
+        "type": "inject",
+        "z": "34dff9962b6572f6",
+        "name": "randomise weights",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "random-weights",
+        "x": 863,
+        "y": 364,
+        "wires": [
+            [
+                "fa90305f76aa8466"
+            ]
+        ]
+    },
+    {
+        "id": "7760d99cd046f7a9",
+        "type": "debug",
+        "z": "34dff9962b6572f6",
+        "name": "show test output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "values",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1872,
+        "y": 157,
+        "wires": []
+    },
+    {
+        "id": "72fa901e872ceb52",
+        "type": "switch",
+        "z": "34dff9962b6572f6",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "test-output",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1646,
+        "y": 157,
+        "wires": [
+            [
+                "7760d99cd046f7a9"
+            ]
+        ]
+    },
+    {
+        "id": "90c0f7fdc23a7e5b",
+        "type": "nnb-layer-node",
+        "z": "34dff9962b6572f6",
+        "name": "",
+        "bias": 0,
+        "threshold": 0,
+        "weights": {
+            "232760b445acef87": 0.01744287067087802,
+            "34ad3ddc86cfb74b": -0.1078608684648863,
+            "e0ec19b8bb90dad1": -0.35729411029712055,
+            "46e624d6d4f1d0bc": 0.19912850208005017
+        },
+        "actfunct": "Gaussian",
+        "x": 734,
+        "y": 583,
+        "wires": [
+            [
+                "f478775b6ad2eb92"
+            ]
+        ]
+    },
+    {
+        "id": "f478775b6ad2eb92",
+        "type": "nnb-layer-node",
+        "z": "34dff9962b6572f6",
+        "name": "",
+        "bias": 0,
+        "threshold": "-3",
+        "weights": {
+            "30d4ccdc5ba2766c": 0.20519579346756744,
+            "a36718dcaf101c19": 0.10499884599998777,
+            "90c0f7fdc23a7e5b": 0.03753312304127232
+        },
+        "actfunct": "Identity",
+        "x": 1026,
+        "y": 584,
+        "wires": [
+            [
+                "8d5fd29609d79b5a"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,25 @@
+{
+  "name" : "@gorenje/node-red-contrib-neuralnet-builder",
+  "version": "0.0.1",
+  "dependencies": {
+  },
+  "keywords": [ "node-red" ],
+  "homepage": "https://github.com/gorenje/node-red-contrib-neuralnet-builder#README.md",
+  "license": "SEE LICENSE IN https://github.com/gorenje/node-red-contrib-neuralnet-builder#LICENSE",
+  "author": {
+    "name": "Gerrit Riessen",
+    "email": "nodered@spreads-the.love",
+    "url": "https://spread-the.love"
+  },
+  "node-red" : {
+    "version": ">=2.0.0",
+    "nodes": {
+      "base":        "nodes/00-base.js",
+      "input-node":  "nodes/05-input-node.js",
+      "hidden-node": "nodes/10-hidden-node.js",
+      "output-node": "nodes/15-output-node.js",
+      "backprop":    "nodes/25-backprop.js",
+      "trainer":     "nodes/30-trainer.js"
+    }
+  }
+}

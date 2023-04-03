@@ -1,0 +1,90 @@
+<script type="text/javascript">
+  RED.nodes.registerType('nnb-layer-node',{ ...window.mmDefaults, ...{
+    color: '#ffffef',
+    icon: "subflow.svg",
+    paletteLabel: 'Hidden',
+    defaults: {
+      name: {
+        value:""
+      },
+      bias: {
+        value: 0.0,
+        validate:RED.validators.number()
+      },
+      threshold: {
+        value: 0.0,
+        validate:RED.validators.number()
+      },
+      weights: {
+        value: {}
+      },
+      actfunct: {
+        value: "Identity"
+      }
+    },
+    label: function() {
+      return (this.name || this.actfunct || this._def.paletteLabel) + ": " + (this.bias || "0") + ", " + (this.threshold || "0");
+    },
+
+  }});
+</script>
+
+<script type="text/html" data-template-name="nnb-layer-node">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-bias"><i class="fa fa-tag"></i> Bias</label>
+        <input type="text" id="node-input-bias" placeholder="0.0">
+        <input type="hidden" id="node-input-bias-type">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-threshold"><i class="fa fa-tag"></i> Threshold</label>
+        <input type="text" id="node-input-threshold" placeholder="0.0">
+        <input type="hidden" id="node-input-threshold-type">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-actfunct">Activation Function</span></label>
+        <select id="node-input-actfunct" style="width: 70%">
+            <option value="Identity" selected>Identity</option>
+            <option value="Inverse">Inverse</option>
+            <option value="BinaryStep">BinaryStep</option>
+            <option value="Bipolar">Bipolar</option>
+            <option value="SoftStep">SoftStep</option>
+            <option value="Sigmoid">Sigmoid</option>
+            <option value="Logistic">Logistic</option>
+            <option value="BipolarSigmoid">BipolarSigmoid</option>
+            <option value="Tanh">Tanh</option>
+            <option value="HardTanh">HardTanh</option>
+            <option value="ArcTan">ArcTan</option>
+            <option value="SoftSign">SoftSign</option>
+            <option value="ElliotSig">ElliotSig</option>
+            <option value="Erf">Erf</option>
+            <option value="Sinc">Sinc</option>
+            <option value="Sinusoid">Sinusoid</option>
+            <option value="Gaussian">Gaussian</option>
+            <option value="ISRU">ISRU</OPTION>
+            <option value="ReLU">ReLU</option>
+            <option value="GELU">GELU</OPTION>
+            <option value="PReLU">PReLU</option>
+            <option value="ELU">ELU</OPTION>
+            <option value="SELU">SELU</OPTION>
+            <option value="SoftPlus">SoftPlus</option>
+            <option value="Mish">Mish</option>
+            <option value="SQNL">SQNL</OPTION>
+            <option value="BentIdentity">BentIdentity</option>
+            <option value="Swish1">Swish1</option>
+            <option value="SiLU">SiLU</option>
+        </select>
+    </div>
+
+    <div class="form-row node-input-weights-row"></div>
+</script>
+
+<script type="text/html" data-help-name="nnb-layer-node">
+    <p>A hidden node designed to be placed between input and output nodes.</p>
+</script>

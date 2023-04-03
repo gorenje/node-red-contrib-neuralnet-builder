@@ -1,0 +1,728 @@
+[
+    {
+        "id": "0b7db789c2b6bb19",
+        "type": "tab",
+        "label": "Abalone - manual",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "088c8d356c830f6d",
+        "type": "nnb-layer-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "bias": "0",
+        "threshold": "-1",
+        "weights": {
+            "69b3b4d075b73e0b": -0.024378783965029793,
+            "b68f5f83b42f3f75": 0.10375018426878624,
+            "c6fe8ffe09f6b49a": 0.27884443299211625,
+            "6c448b340d14c153": 0.7885097955421507,
+            "aee8146be4148868": -0.7114464308115434,
+            "b3dea75bed3045a7": 0.8786130402757695,
+            "3d57239420fd0729": 0.40118203289128607,
+            "c03913d2e07ed895": -0.5530370528804287
+        },
+        "actfunct": "Identity",
+        "x": 728,
+        "y": 598,
+        "wires": [
+            [
+                "47fb8f7c29cb5643",
+                "2e2a5ef6ef1593d5"
+            ]
+        ]
+    },
+    {
+        "id": "9d7374590e08a1ea",
+        "type": "nnb-layer-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "bias": "0",
+        "threshold": "-1",
+        "weights": {
+            "69b3b4d075b73e0b": 0.9711133149787643,
+            "b68f5f83b42f3f75": 0.7269513834898,
+            "c6fe8ffe09f6b49a": -0.7097496945381998,
+            "6c448b340d14c153": 0.6371517569209351,
+            "aee8146be4148868": 0.006889689980721592,
+            "b3dea75bed3045a7": 0.45393608087502413,
+            "3d57239420fd0729": -0.8847608079835823,
+            "c03913d2e07ed895": -0.6405795562473475
+        },
+        "actfunct": "Sinusoid",
+        "x": 738,
+        "y": 659.6666870117188,
+        "wires": [
+            [
+                "2e2a5ef6ef1593d5",
+                "47fb8f7c29cb5643"
+            ]
+        ]
+    },
+    {
+        "id": "69b3b4d075b73e0b",
+        "type": "nnb-input-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "Gender",
+        "x": 220,
+        "y": 435.6667044503349,
+        "wires": [
+            [
+                "088c8d356c830f6d",
+                "9d7374590e08a1ea",
+                "4abb348e7263de40",
+                "2bbca30b8fe54a89",
+                "b409a42929e0b2b4",
+                "b6d3156a1b7950f2",
+                "97cc2cf089fd432b",
+                "f147a41c14cf792a"
+            ]
+        ]
+    },
+    {
+        "id": "b68f5f83b42f3f75",
+        "type": "nnb-input-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "Length",
+        "x": 230,
+        "y": 516.5238448162469,
+        "wires": [
+            [
+                "088c8d356c830f6d",
+                "9d7374590e08a1ea",
+                "4abb348e7263de40",
+                "2bbca30b8fe54a89",
+                "b6d3156a1b7950f2",
+                "97cc2cf089fd432b",
+                "b409a42929e0b2b4",
+                "f147a41c14cf792a"
+            ]
+        ],
+        "info": "Sex,Length,Diameter,Height,Whole,Shucked,Viscera,Shell,Rings"
+    },
+    {
+        "id": "620171f821496e36",
+        "type": "nnb-output-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "Rings",
+        "weights": {
+            "088c8d356c830f6d": 1,
+            "9d7374590e08a1ea": 0.8539994423584765,
+            "d7ca0b7b9d5f2df5": 0.018718954449526315,
+            "86f077bb176c0b9e": null,
+            "840b927f9097a0ab": null,
+            "6be3952086799015": null,
+            "d1e47a7e37be8d5d": -128.8287356283184,
+            "8de98739b9044e35": null,
+            "f845421bd28d0944": null,
+            "4ad9e52c3209a507": null,
+            "9fa0d4f1b742dfce": null,
+            "b3b0f69e3e88f309": 0.5,
+            "91cc49775bf95761": 0.5,
+            "14d39e537e3e4673": 1,
+            "4abb348e7263de40": 1,
+            "2bbca30b8fe54a89": 1,
+            "b6d3156a1b7950f2": 1,
+            "97cc2cf089fd432b": 1,
+            "b409a42929e0b2b4": 1,
+            "f147a41c14cf792a": 1,
+            "47fb8f7c29cb5643": 0.485937434875364,
+            "2e2a5ef6ef1593d5": -0.2923439229171638
+        },
+        "x": 1356,
+        "y": 660.666748046875,
+        "wires": [
+            [
+                "5b87723b51ae8934"
+            ]
+        ]
+    },
+    {
+        "id": "5b87723b51ae8934",
+        "type": "nnb-backprop",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "scope": [
+            "620171f821496e36"
+        ],
+        "x": 1632,
+        "y": 386.6666259765625,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3d89f50ceffe4d65",
+        "type": "nnb-trainer",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "scope": [
+            "69b3b4d075b73e0b",
+            "b68f5f83b42f3f75",
+            "c6fe8ffe09f6b49a",
+            "6c448b340d14c153",
+            "aee8146be4148868",
+            "b3dea75bed3045a7",
+            "3d57239420fd0729",
+            "c03913d2e07ed895"
+        ],
+        "learningrate": "0.04",
+        "weightmin": "-1",
+        "weightmax": "1",
+        "x": 1606,
+        "y": 273.66668701171875,
+        "wires": [
+            [
+                "5b87723b51ae8934"
+            ]
+        ]
+    },
+    {
+        "id": "6ebd079754be0f9c",
+        "type": "csv",
+        "z": "0b7db789c2b6bb19",
+        "name": "dataset - 4177 entries",
+        "sep": ",",
+        "hdrin": false,
+        "hdrout": "all",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "Gender,Length,Diameter,Height,Whole,Shucked,Viscera,Shell,Rings",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 724,
+        "y": 111.66667175292969,
+        "wires": [
+            [
+                "fd10675ff318d748"
+            ]
+        ]
+    },
+    {
+        "id": "083b458fe7360f87",
+        "type": "http request",
+        "z": "0b7db789c2b6bb19",
+        "name": "https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 474,
+        "y": 54.666656494140625,
+        "wires": [
+            [
+                "6ebd079754be0f9c"
+            ]
+        ],
+        "info": "Details available here:\n\nhttps://archive.ics.uci.edu/ml/datasets/Abalone\n\nData:\n\nhttps://archive.ics.uci.edu/ml/machine-learning-databases/abalone/\n\n"
+    },
+    {
+        "id": "4f62b368ca17f0ae",
+        "type": "inject",
+        "z": "0b7db789c2b6bb19",
+        "name": "Load dataset",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 334,
+        "y": 131.66668701171875,
+        "wires": [
+            [
+                "083b458fe7360f87"
+            ]
+        ]
+    },
+    {
+        "id": "fd10675ff318d748",
+        "type": "function",
+        "z": "0b7db789c2b6bb19",
+        "name": "remap gender & set topic",
+        "func": "var _genderMap = {\n    'M': 0.01,\n    'F': 0.02,\n    'I': 0.03\n};\n\nfor ( var idx = 0; idx < msg.payload.length ; idx++ ) {\n    msg.payload[idx].Gender = _genderMap[msg.payload[idx].Gender]\n}\n\nmsg.topic = \"dataset\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 841,
+        "y": 162.66668701171875,
+        "wires": [
+            [
+                "122a1ff6479a7738"
+            ]
+        ]
+    },
+    {
+        "id": "c6fe8ffe09f6b49a",
+        "type": "nnb-input-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "Diameter",
+        "x": 220,
+        "y": 597.3809851821588,
+        "wires": [
+            [
+                "088c8d356c830f6d",
+                "9d7374590e08a1ea",
+                "4abb348e7263de40",
+                "2bbca30b8fe54a89",
+                "97cc2cf089fd432b",
+                "b409a42929e0b2b4",
+                "b6d3156a1b7950f2",
+                "f147a41c14cf792a"
+            ]
+        ]
+    },
+    {
+        "id": "6c448b340d14c153",
+        "type": "nnb-input-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "Height",
+        "x": 230,
+        "y": 678.2381255480708,
+        "wires": [
+            [
+                "088c8d356c830f6d",
+                "9d7374590e08a1ea",
+                "4abb348e7263de40",
+                "2bbca30b8fe54a89",
+                "b409a42929e0b2b4",
+                "b6d3156a1b7950f2",
+                "97cc2cf089fd432b",
+                "f147a41c14cf792a"
+            ]
+        ]
+    },
+    {
+        "id": "aee8146be4148868",
+        "type": "nnb-input-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "Whole",
+        "x": 230,
+        "y": 759.0952659139828,
+        "wires": [
+            [
+                "088c8d356c830f6d",
+                "9d7374590e08a1ea",
+                "4abb348e7263de40",
+                "2bbca30b8fe54a89",
+                "b409a42929e0b2b4",
+                "b6d3156a1b7950f2",
+                "97cc2cf089fd432b",
+                "f147a41c14cf792a"
+            ]
+        ]
+    },
+    {
+        "id": "b3dea75bed3045a7",
+        "type": "nnb-input-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "Shucked",
+        "x": 220,
+        "y": 839.9524062798947,
+        "wires": [
+            [
+                "088c8d356c830f6d",
+                "9d7374590e08a1ea",
+                "4abb348e7263de40",
+                "2bbca30b8fe54a89",
+                "b409a42929e0b2b4",
+                "b6d3156a1b7950f2",
+                "97cc2cf089fd432b",
+                "f147a41c14cf792a"
+            ]
+        ]
+    },
+    {
+        "id": "3d57239420fd0729",
+        "type": "nnb-input-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "Viscera",
+        "x": 220,
+        "y": 920.8095466458067,
+        "wires": [
+            [
+                "088c8d356c830f6d",
+                "9d7374590e08a1ea",
+                "4abb348e7263de40",
+                "2bbca30b8fe54a89",
+                "b409a42929e0b2b4",
+                "b6d3156a1b7950f2",
+                "97cc2cf089fd432b",
+                "f147a41c14cf792a"
+            ]
+        ]
+    },
+    {
+        "id": "c03913d2e07ed895",
+        "type": "nnb-input-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "Shell",
+        "x": 230,
+        "y": 1001.6666870117188,
+        "wires": [
+            [
+                "088c8d356c830f6d",
+                "9d7374590e08a1ea",
+                "4abb348e7263de40",
+                "2bbca30b8fe54a89",
+                "b409a42929e0b2b4",
+                "b6d3156a1b7950f2",
+                "97cc2cf089fd432b",
+                "f147a41c14cf792a"
+            ]
+        ]
+    },
+    {
+        "id": "3078b9ae65404707",
+        "type": "inject",
+        "z": "0b7db789c2b6bb19",
+        "name": "randomise weights",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "random-weights",
+        "x": 332,
+        "y": 224,
+        "wires": [
+            [
+                "3d89f50ceffe4d65"
+            ]
+        ]
+    },
+    {
+        "id": "122a1ff6479a7738",
+        "type": "change",
+        "z": "0b7db789c2b6bb19",
+        "name": "set training and test sizes",
+        "rules": [
+            {
+                "t": "set",
+                "p": "training_size",
+                "pt": "msg",
+                "to": "212",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "testing_size",
+                "pt": "msg",
+                "to": "100",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 210,
+        "wires": [
+            [
+                "3d89f50ceffe4d65"
+            ]
+        ]
+    },
+    {
+        "id": "aa6077f4add1bceb",
+        "type": "inject",
+        "z": "0b7db789c2b6bb19",
+        "name": "trigger fast forward",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "backprop-completed",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1120,
+        "y": 346,
+        "wires": [
+            [
+                "3d89f50ceffe4d65"
+            ]
+        ]
+    },
+    {
+        "id": "4abb348e7263de40",
+        "type": "nnb-layer-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "bias": "0",
+        "threshold": "-1",
+        "weights": {
+            "69b3b4d075b73e0b": 0.5385703781452515,
+            "b68f5f83b42f3f75": 0.38549860912762357,
+            "c6fe8ffe09f6b49a": -0.8636461749995981,
+            "6c448b340d14c153": 0.11778978933537854,
+            "aee8146be4148868": 0.7001007273615731,
+            "b3dea75bed3045a7": -0.04731078492918117,
+            "3d57239420fd0729": -0.7801645432532567,
+            "c03913d2e07ed895": 0.29100197640068304
+        },
+        "actfunct": "Identity",
+        "x": 728,
+        "y": 538,
+        "wires": [
+            [
+                "47fb8f7c29cb5643",
+                "2e2a5ef6ef1593d5"
+            ]
+        ]
+    },
+    {
+        "id": "2bbca30b8fe54a89",
+        "type": "nnb-layer-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "bias": 0,
+        "threshold": "0",
+        "weights": {
+            "b68f5f83b42f3f75": -0.5646569749739152,
+            "6c448b340d14c153": 0.05863639543646437,
+            "aee8146be4148868": 0.754926928465169,
+            "b3dea75bed3045a7": -0.22196387805678297,
+            "3d57239420fd0729": 0.6910873309318384,
+            "69b3b4d075b73e0b": -0.13063243929650614,
+            "c6fe8ffe09f6b49a": -0.14037222511850755,
+            "c03913d2e07ed895": -0.3376133598705362
+        },
+        "actfunct": "SELU",
+        "x": 728,
+        "y": 715,
+        "wires": [
+            [
+                "2e2a5ef6ef1593d5",
+                "47fb8f7c29cb5643"
+            ]
+        ]
+    },
+    {
+        "id": "b6d3156a1b7950f2",
+        "type": "nnb-layer-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "bias": "0",
+        "threshold": "-0",
+        "weights": {
+            "69b3b4d075b73e0b": -0.6595883836516991,
+            "b68f5f83b42f3f75": 0.42324852617078346,
+            "c6fe8ffe09f6b49a": -0.6264081723709305,
+            "6c448b340d14c153": -0.4358199073045088,
+            "aee8146be4148868": 0.9352752122285324,
+            "b3dea75bed3045a7": 0.3373356058058805,
+            "3d57239420fd0729": 0.07589360063148476,
+            "c03913d2e07ed895": -0.8105284619533308
+        },
+        "actfunct": "Sinc",
+        "x": 728,
+        "y": 838,
+        "wires": [
+            [
+                "2e2a5ef6ef1593d5",
+                "47fb8f7c29cb5643"
+            ]
+        ]
+    },
+    {
+        "id": "97cc2cf089fd432b",
+        "type": "nnb-layer-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "bias": "0",
+        "threshold": "0",
+        "weights": {
+            "69b3b4d075b73e0b": 0.6694055240119448,
+            "b68f5f83b42f3f75": 0.8787565804848363,
+            "c6fe8ffe09f6b49a": 0.9267315448205053,
+            "6c448b340d14c153": 0.6785800012277887,
+            "aee8146be4148868": -0.9224238007645589,
+            "b3dea75bed3045a7": -0.24939590771798148,
+            "3d57239420fd0729": 0.8453263098430845,
+            "c03913d2e07ed895": 0.7505112701943872
+        },
+        "actfunct": "Logistic",
+        "x": 728,
+        "y": 892.666748046875,
+        "wires": [
+            [
+                "2e2a5ef6ef1593d5",
+                "47fb8f7c29cb5643"
+            ]
+        ]
+    },
+    {
+        "id": "b409a42929e0b2b4",
+        "type": "nnb-layer-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "bias": 0,
+        "threshold": "0",
+        "weights": {
+            "69b3b4d075b73e0b": 0.917901867771687,
+            "b68f5f83b42f3f75": -0.42631079922219195,
+            "c6fe8ffe09f6b49a": 0.3017902622892312,
+            "6c448b340d14c153": -0.7419317227044688,
+            "aee8146be4148868": -0.002482660087146371,
+            "b3dea75bed3045a7": 0.339584817940374,
+            "3d57239420fd0729": 0.6957879195355225,
+            "c03913d2e07ed895": -0.4691292778161853
+        },
+        "actfunct": "Logistic",
+        "x": 728,
+        "y": 777,
+        "wires": [
+            [
+                "2e2a5ef6ef1593d5",
+                "47fb8f7c29cb5643"
+            ]
+        ]
+    },
+    {
+        "id": "f147a41c14cf792a",
+        "type": "nnb-layer-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "bias": "0",
+        "threshold": "-1",
+        "weights": {
+            "b68f5f83b42f3f75": 0.8085991305393851,
+            "6c448b340d14c153": 0.8933736066684919,
+            "aee8146be4148868": 0.0744023508966607,
+            "b3dea75bed3045a7": -0.29842969582694945,
+            "3d57239420fd0729": -0.47949610386880526,
+            "69b3b4d075b73e0b": 0.17870154510025005,
+            "c6fe8ffe09f6b49a": -0.18620417131088107,
+            "c03913d2e07ed895": 0.23058450856876522
+        },
+        "actfunct": "Logistic",
+        "x": 738,
+        "y": 479,
+        "wires": [
+            [
+                "47fb8f7c29cb5643",
+                "2e2a5ef6ef1593d5"
+            ]
+        ]
+    },
+    {
+        "id": "47fb8f7c29cb5643",
+        "type": "nnb-layer-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "bias": 0,
+        "threshold": "-1",
+        "weights": {
+            "088c8d356c830f6d": -0.9184269323769185,
+            "4abb348e7263de40": 0.7327178813419017,
+            "f147a41c14cf792a": -0.8225069058589032,
+            "9d7374590e08a1ea": -0.26675976415208114,
+            "2bbca30b8fe54a89": -0.5554788774272383,
+            "b6d3156a1b7950f2": -0.1639200317022773,
+            "97cc2cf089fd432b": -0.3884908876807782,
+            "b409a42929e0b2b4": 0.29965317538287994
+        },
+        "actfunct": "BipolarSigmoid",
+        "x": 1148,
+        "y": 621,
+        "wires": [
+            [
+                "620171f821496e36"
+            ]
+        ]
+    },
+    {
+        "id": "2e2a5ef6ef1593d5",
+        "type": "nnb-layer-node",
+        "z": "0b7db789c2b6bb19",
+        "name": "",
+        "bias": 0,
+        "threshold": "-1",
+        "weights": {
+            "9d7374590e08a1ea": 0.5803490882860607,
+            "2bbca30b8fe54a89": -0.09836212197917815,
+            "b6d3156a1b7950f2": -0.45323948184055407,
+            "97cc2cf089fd432b": -0.14109245371825896,
+            "b409a42929e0b2b4": 0.6205079326183633,
+            "f147a41c14cf792a": 0.7036732365878171,
+            "088c8d356c830f6d": -0.277946728691016,
+            "4abb348e7263de40": 0.770382036220199
+        },
+        "actfunct": "ElliotSig",
+        "x": 1132,
+        "y": 726,
+        "wires": [
+            [
+                "620171f821496e36"
+            ]
+        ]
+    },
+    {
+        "id": "07204a4a3c6e3bcd",
+        "type": "inject",
+        "z": "0b7db789c2b6bb19",
+        "name": "trigger backprop",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "trigger-backprop",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1120,
+        "y": 389,
+        "wires": [
+            [
+                "5b87723b51ae8934"
+            ]
+        ]
+    }
+]
