@@ -64,10 +64,7 @@ The ANN itself can have as many input, hidden and output nodes as required. Ther
 
 The basic manual training is shown in the [abalone manual](examples/abalone-manual.json) flow:
 
-<video width="1280" height="720" controls>
-  <source src="assets/abalone-manual.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+![Abalone Manual](assets/abalone-manual.gif)
 
 ## Prior Art
 
