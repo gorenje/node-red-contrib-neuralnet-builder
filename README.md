@@ -54,17 +54,42 @@ This is repeated for the entire training data. Normally ANNs are trained using t
 
 ## Unknown Knowns
 
-- None.
+- Many.
 
 ## Usage
 
 Each network is assumed to be created in a separate Node-RED flow tab. Each network should have exactly one Trainer node and one Backprop node.
 
-The ANN itself can have as many input, hidden and output nodes as required. There is a special interconnectedness between the trainer node and the input nodes, as there is a special interrelatedness with output nodes and the backprop node.
+The ANN itself can have as many input, hidden and output nodes as required. There is a special interconnectedness between the trainer node and the input nodes, as there is a special interrelatedness with output nodes and the backprop node. Both trainer and backprop nodes need to be connected to the input and output nodes respectively.
 
 The basic manual training is shown in the [abalone manual](examples/abalone-manual.json) flow:
 
 ![Abalone Manual](assets/abalone-manual.gif)
+
+First the connection weights are randomly set, then the training data is loaded. Third the fast forward is triggered. This simply passes a datapoint through the network and computes and output values. The triggering the backprop step causes the weights to be adjusted *backwardly* through the network, hence the weights change.
+
+The manual flow is rather repetitive therefore the is an automatic version that does all this automatically. By linking the backprop node to the trainer node and vice versa, the training only has to be triggered once. The training is triggered by loading the dataset. As demonstrated in the [abalone automatic](examples/abalone-automatic.json) flow:
+
+![Abalone Automatic](assets/abalone-automatic.gif)
+
+This also shows that the testing step that is also done automatically. These are the debug outputs. Each represent a single test datapoint (taken from the original training set) and a debug message is generated containing the output name, the desired value and the actually generated value.
+
+### Shape does not matter
+
+Classic ANNs have all nodes from each layer connected to all nodes in the previous layer, but as [balance and scale](examples/bands.json) ANN demonstrates, this need not be the case. As long as there is a pathway between an input node and an output node, the ANN will work.
+
+### Creating an ANN
+
+For this example the [Balance and Scale](https://archive.ics.uci.edu/ml/datasets/Balance+Scale) dataset is taken and the completed [flow is here](examples/created.json).
+
+![Create own ANN](assets/create-own.gif)
+
+Things of note here:
+
+- The datasource is retrieved and parsed. Import is that CSV data is generated into a single array and that the header names are included in each datapoint,
+- the input and output nodes have the same names as the columns of the training data
+- the trainer and the backprop nodes are linked to the input and output nodes respectively. Additional the backprop node is connected to all output nodes.
+- the trainer has weight limits and a learning rate that can be set.
 
 ## Prior Art
 

@@ -1,0 +1,461 @@
+[
+    {
+        "id": "b84187e6663b4f0f",
+        "type": "tab",
+        "label": "Create Own ANN",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bcf16de22a2dd926",
+        "type": "http request",
+        "z": "b84187e6663b4f0f",
+        "name": "https://archive.ics.uci.edu/ml/machine-learning-databases/balance-scale/balance-scale.data",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/balance-scale/balance-scale.data",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 614,
+        "y": 224,
+        "wires": [
+            [
+                "d736e4fd724c3e38"
+            ]
+        ]
+    },
+    {
+        "id": "d736e4fd724c3e38",
+        "type": "csv",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "all",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "ClassName,LeftWeight,LeftDistance,RightWeight,RightDistance",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 969,
+        "y": 313,
+        "wires": [
+            [
+                "38b98524cdf29b2b"
+            ]
+        ]
+    },
+    {
+        "id": "38b98524cdf29b2b",
+        "type": "function",
+        "z": "b84187e6663b4f0f",
+        "name": "function 1",
+        "func": "var _classNameMap = {\n    'B': 0,\n    'L': 1,\n    'R': 2\n};\n\nfor (var idx = 0; idx < msg.payload.length; idx++) {\n    msg.payload[idx].ClassName = _classNameMap[msg.payload[idx].ClassName]\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1128,
+        "y": 231,
+        "wires": [
+            [
+                "ba2a56b6927f2410"
+            ]
+        ]
+    },
+    {
+        "id": "ba2a56b6927f2410",
+        "type": "change",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "training_size",
+                "pt": "msg",
+                "to": "100",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "testing_size",
+                "pt": "msg",
+                "to": "20",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "dataset",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1316,
+        "y": 271,
+        "wires": [
+            [
+                "9362f38c3a9c18aa",
+                "c1cd79f50a66e59a"
+            ]
+        ]
+    },
+    {
+        "id": "07bc94f397bd76d6",
+        "type": "inject",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 178,
+        "y": 142,
+        "wires": [
+            [
+                "bcf16de22a2dd926"
+            ]
+        ]
+    },
+    {
+        "id": "9362f38c3a9c18aa",
+        "type": "debug",
+        "z": "b84187e6663b4f0f",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1529,
+        "y": 189,
+        "wires": []
+    },
+    {
+        "id": "5cca47fa699e8f76",
+        "type": "nnb-input-node",
+        "z": "b84187e6663b4f0f",
+        "name": "LeftWeight",
+        "x": 346,
+        "y": 502,
+        "wires": [
+            [
+                "f6524b5480362736",
+                "a4e00aac7d23cbe7",
+                "a649dff5f0f83a1a"
+            ]
+        ]
+    },
+    {
+        "id": "5cfd64143e4796b8",
+        "type": "nnb-input-node",
+        "z": "b84187e6663b4f0f",
+        "name": "LeftDistance",
+        "x": 386,
+        "y": 582,
+        "wires": [
+            [
+                "a4e00aac7d23cbe7",
+                "a649dff5f0f83a1a",
+                "f6524b5480362736"
+            ]
+        ]
+    },
+    {
+        "id": "e99f7640b70e3c3f",
+        "type": "nnb-input-node",
+        "z": "b84187e6663b4f0f",
+        "name": "RightWeight",
+        "x": 384,
+        "y": 652,
+        "wires": [
+            [
+                "a649dff5f0f83a1a",
+                "a4e00aac7d23cbe7",
+                "f6524b5480362736"
+            ]
+        ]
+    },
+    {
+        "id": "24bfb016c56c78bf",
+        "type": "nnb-input-node",
+        "z": "b84187e6663b4f0f",
+        "name": "RightDistance",
+        "x": 406,
+        "y": 740,
+        "wires": [
+            [
+                "a4e00aac7d23cbe7",
+                "f6524b5480362736",
+                "a649dff5f0f83a1a"
+            ]
+        ]
+    },
+    {
+        "id": "044bc92e13fcdae9",
+        "type": "nnb-output-node",
+        "z": "b84187e6663b4f0f",
+        "name": "ClassName",
+        "weights": {
+            "9a502b1595e61695": 1,
+            "923805530cfe602f": 1
+        },
+        "x": 1169,
+        "y": 592,
+        "wires": [
+            [
+                "1214f638182d24c8"
+            ]
+        ]
+    },
+    {
+        "id": "f6524b5480362736",
+        "type": "nnb-layer-node",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "bias": 0,
+        "threshold": 0,
+        "weights": {
+            "5cca47fa699e8f76": 1,
+            "5cfd64143e4796b8": 1,
+            "e99f7640b70e3c3f": 1,
+            "24bfb016c56c78bf": 1
+        },
+        "actfunct": "Identity",
+        "x": 646,
+        "y": 541,
+        "wires": [
+            [
+                "9a502b1595e61695",
+                "923805530cfe602f"
+            ]
+        ]
+    },
+    {
+        "id": "a4e00aac7d23cbe7",
+        "type": "nnb-layer-node",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "bias": 0,
+        "threshold": 0,
+        "weights": {
+            "5cca47fa699e8f76": 0.0024060274564870325,
+            "5cfd64143e4796b8": 2.2162986477794252e-9,
+            "e99f7640b70e3c3f": 1.1352443498254041e-9,
+            "24bfb016c56c78bf": 8.516950560469825e-10
+        },
+        "actfunct": "Sinusoid",
+        "x": 706,
+        "y": 642,
+        "wires": [
+            [
+                "923805530cfe602f",
+                "9a502b1595e61695"
+            ]
+        ]
+    },
+    {
+        "id": "a649dff5f0f83a1a",
+        "type": "nnb-layer-node",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "bias": 0,
+        "threshold": 0,
+        "weights": {
+            "5cca47fa699e8f76": 1,
+            "5cfd64143e4796b8": 1,
+            "e99f7640b70e3c3f": 1,
+            "24bfb016c56c78bf": 1
+        },
+        "actfunct": "Identity",
+        "x": 720,
+        "y": 703,
+        "wires": [
+            [
+                "9a502b1595e61695",
+                "923805530cfe602f"
+            ]
+        ]
+    },
+    {
+        "id": "9a502b1595e61695",
+        "type": "nnb-layer-node",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "bias": 0,
+        "threshold": 0,
+        "weights": {
+            "f6524b5480362736": 1,
+            "a4e00aac7d23cbe7": 1,
+            "a649dff5f0f83a1a": 1
+        },
+        "actfunct": "Identity",
+        "x": 934,
+        "y": 567,
+        "wires": [
+            [
+                "044bc92e13fcdae9"
+            ]
+        ]
+    },
+    {
+        "id": "923805530cfe602f",
+        "type": "nnb-layer-node",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "bias": 0,
+        "threshold": 0,
+        "weights": {
+            "f6524b5480362736": 6.005297760685008e-19,
+            "a4e00aac7d23cbe7": 0.8618870138568867,
+            "a649dff5f0f83a1a": 6.005297760685008e-19
+        },
+        "actfunct": "Sigmoid",
+        "x": 955,
+        "y": 652,
+        "wires": [
+            [
+                "044bc92e13fcdae9"
+            ]
+        ]
+    },
+    {
+        "id": "1214f638182d24c8",
+        "type": "nnb-backprop",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "scope": [
+            "044bc92e13fcdae9"
+        ],
+        "x": 1427,
+        "y": 534,
+        "wires": [
+            [
+                "c1cd79f50a66e59a"
+            ]
+        ]
+    },
+    {
+        "id": "c1cd79f50a66e59a",
+        "type": "nnb-trainer",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "scope": [
+            "5cca47fa699e8f76",
+            "5cfd64143e4796b8",
+            "e99f7640b70e3c3f",
+            "24bfb016c56c78bf"
+        ],
+        "learningrate": "0.04",
+        "weightmin": "-1",
+        "weightmax": "1",
+        "x": 1410,
+        "y": 401,
+        "wires": [
+            [
+                "1214f638182d24c8",
+                "eb4f5c5ab9fe1fdd"
+            ]
+        ]
+    },
+    {
+        "id": "eb4f5c5ab9fe1fdd",
+        "type": "switch",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "test-output",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1581,
+        "y": 363,
+        "wires": [
+            [
+                "e39b013025093a28"
+            ]
+        ]
+    },
+    {
+        "id": "e39b013025093a28",
+        "type": "debug",
+        "z": "b84187e6663b4f0f",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "values",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1743,
+        "y": 319,
+        "wires": []
+    },
+    {
+        "id": "abae18dec6e640d0",
+        "type": "inject",
+        "z": "b84187e6663b4f0f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "random-weights",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1078,
+        "y": 406,
+        "wires": [
+            [
+                "c1cd79f50a66e59a"
+            ]
+        ]
+    }
+]

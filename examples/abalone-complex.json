@@ -1,0 +1,790 @@
+[
+    {
+        "id": "0afa833f1084c333",
+        "type": "tab",
+        "label": "Neural Network - Abalone",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "fefbabb1dc935830",
+        "type": "group",
+        "z": "0afa833f1084c333",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "519c4315d03702ad",
+            "e3efa26167dec45e",
+            "0d8880cccb2004b7",
+            "50b1fd62bbc6a4c6",
+            "4bf6bcd18fb5cd9f",
+            "9b3b3c86bb4bc1bb",
+            "d735558d636b6f9d",
+            "817d23967665cd23",
+            "b3ba48bf7e8e4ced",
+            "e4c264a057850c7f",
+            "9a5dd5dca69ddcc8",
+            "17bb1dcede9faa10",
+            "ad7f6d051b687234",
+            "bae53332f5f2ad17",
+            "c9d58a13955486c8",
+            "899fab71fc7767b4",
+            "44ee72b6e1213ba6",
+            "ce5d10f29e46f9ef",
+            "10109fb31198afb9",
+            "4618614714adaed0",
+            "85fc4a4d833c87c3",
+            "16f41f45b727e9ee",
+            "24e3b2c3c979f46a"
+        ],
+        "x": 106,
+        "y": 367.00001743861617,
+        "w": 1605,
+        "h": 552
+    },
+    {
+        "id": "519c4315d03702ad",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "bae53332f5f2ad17": 1,
+            "c9d58a13955486c8": 0.24915981100393383,
+            "44ee72b6e1213ba6": 0.5538815846146992,
+            "ce5d10f29e46f9ef": -0.3560149428222258,
+            "10109fb31198afb9": 0.5746140654178498,
+            "4618614714adaed0": -0.07297303875331698,
+            "85fc4a4d833c87c3": 0.44037358215272676,
+            "16f41f45b727e9ee": 0.1756311768636605
+        },
+        "actfunct": "Identity",
+        "x": 678,
+        "y": 681.3333333333333,
+        "wires": [
+            [
+                "0d8880cccb2004b7",
+                "d735558d636b6f9d",
+                "817d23967665cd23",
+                "b3ba48bf7e8e4ced",
+                "e4c264a057850c7f",
+                "50b1fd62bbc6a4c6"
+            ]
+        ]
+    },
+    {
+        "id": "e3efa26167dec45e",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "bae53332f5f2ad17": -0.07990969793915982,
+            "c9d58a13955486c8": 0.9263399032123873,
+            "44ee72b6e1213ba6": 0.18683528218860293,
+            "ce5d10f29e46f9ef": -0.25894790251463407,
+            "10109fb31198afb9": 0.9570635650376484,
+            "4618614714adaed0": -0.6569711873114554,
+            "85fc4a4d833c87c3": 0.7851518394108148,
+            "16f41f45b727e9ee": -0.1271675520447232
+        },
+        "actfunct": "Sinc",
+        "x": 678,
+        "y": 470,
+        "wires": [
+            [
+                "0d8880cccb2004b7",
+                "d735558d636b6f9d",
+                "817d23967665cd23",
+                "b3ba48bf7e8e4ced",
+                "e4c264a057850c7f",
+                "50b1fd62bbc6a4c6"
+            ]
+        ]
+    },
+    {
+        "id": "0d8880cccb2004b7",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "e3efa26167dec45e": 0.8087797449138562,
+            "9b3b3c86bb4bc1bb": 0.12434326332845487,
+            "519c4315d03702ad": 0.7294424867628053,
+            "4bf6bcd18fb5cd9f": 0.7344774722000476
+        },
+        "actfunct": "BipolarSigmoid",
+        "x": 1029,
+        "y": 462,
+        "wires": [
+            [
+                "17bb1dcede9faa10",
+                "9a5dd5dca69ddcc8",
+                "ad7f6d051b687234"
+            ]
+        ]
+    },
+    {
+        "id": "50b1fd62bbc6a4c6",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "e3efa26167dec45e": -0.2223250641114194,
+            "9b3b3c86bb4bc1bb": -0.7659684113053129,
+            "519c4315d03702ad": -0.9376503821456725,
+            "4bf6bcd18fb5cd9f": 0.7389249158038336
+        },
+        "actfunct": "BinaryStep",
+        "x": 1029,
+        "y": 804,
+        "wires": [
+            [
+                "9a5dd5dca69ddcc8",
+                "17bb1dcede9faa10",
+                "ad7f6d051b687234"
+            ]
+        ]
+    },
+    {
+        "id": "4bf6bcd18fb5cd9f",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "bae53332f5f2ad17": 0.6609725873316874,
+            "c9d58a13955486c8": 0.32375620261651905,
+            "44ee72b6e1213ba6": -0.20674297922544094,
+            "ce5d10f29e46f9ef": 0.8177173475968083,
+            "10109fb31198afb9": -0.034088858864447236,
+            "4618614714adaed0": 0.013499277360524697,
+            "85fc4a4d833c87c3": -0.8361497084776031,
+            "16f41f45b727e9ee": 0.1712996966025364
+        },
+        "actfunct": "Inverse",
+        "x": 678,
+        "y": 787,
+        "wires": [
+            [
+                "0d8880cccb2004b7",
+                "d735558d636b6f9d",
+                "817d23967665cd23",
+                "b3ba48bf7e8e4ced",
+                "e4c264a057850c7f",
+                "50b1fd62bbc6a4c6"
+            ]
+        ]
+    },
+    {
+        "id": "9b3b3c86bb4bc1bb",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "bae53332f5f2ad17": 0.08560535233278652,
+            "c9d58a13955486c8": -0.6535157077363176,
+            "44ee72b6e1213ba6": 1,
+            "ce5d10f29e46f9ef": -0.7659350526587875,
+            "10109fb31198afb9": 0.303511755003624,
+            "4618614714adaed0": 0.7730384464307913,
+            "85fc4a4d833c87c3": -0.8616416966003344,
+            "16f41f45b727e9ee": -0.26686848846124694
+        },
+        "actfunct": "Logistic",
+        "x": 678,
+        "y": 575.6666666666666,
+        "wires": [
+            [
+                "0d8880cccb2004b7",
+                "d735558d636b6f9d",
+                "817d23967665cd23",
+                "b3ba48bf7e8e4ced",
+                "e4c264a057850c7f",
+                "50b1fd62bbc6a4c6"
+            ]
+        ]
+    },
+    {
+        "id": "d735558d636b6f9d",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "519c4315d03702ad": -1,
+            "e3efa26167dec45e": 0.32815701618286164,
+            "4bf6bcd18fb5cd9f": 0.03128795185102318,
+            "9b3b3c86bb4bc1bb": -1
+        },
+        "actfunct": "Inverse",
+        "x": 1029,
+        "y": 529,
+        "wires": [
+            [
+                "17bb1dcede9faa10",
+                "9a5dd5dca69ddcc8",
+                "ad7f6d051b687234"
+            ]
+        ]
+    },
+    {
+        "id": "817d23967665cd23",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "e3efa26167dec45e": -0.4798620942959402,
+            "9b3b3c86bb4bc1bb": 0.8113286015842165,
+            "519c4315d03702ad": 0.23477840238573505,
+            "4bf6bcd18fb5cd9f": 0.3310075502740415
+        },
+        "actfunct": "HardTanh",
+        "x": 1029,
+        "y": 597,
+        "wires": [
+            [
+                "17bb1dcede9faa10",
+                "9a5dd5dca69ddcc8",
+                "ad7f6d051b687234"
+            ]
+        ]
+    },
+    {
+        "id": "b3ba48bf7e8e4ced",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "e3efa26167dec45e": 0.6526637647501715,
+            "9b3b3c86bb4bc1bb": -0.6893341681224384,
+            "519c4315d03702ad": -0.11979931021348629,
+            "4bf6bcd18fb5cd9f": -0.10727673060566634
+        },
+        "actfunct": "ReLU",
+        "x": 1029,
+        "y": 660,
+        "wires": [
+            [
+                "17bb1dcede9faa10",
+                "9a5dd5dca69ddcc8",
+                "ad7f6d051b687234"
+            ]
+        ]
+    },
+    {
+        "id": "e4c264a057850c7f",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "e3efa26167dec45e": 0.13984508012364805,
+            "9b3b3c86bb4bc1bb": -0.027252054412977098,
+            "519c4315d03702ad": 0.7748228325774217,
+            "4bf6bcd18fb5cd9f": -0.5327273966351238
+        },
+        "actfunct": "Sinc",
+        "x": 1029,
+        "y": 740,
+        "wires": [
+            [
+                "17bb1dcede9faa10",
+                "9a5dd5dca69ddcc8",
+                "ad7f6d051b687234"
+            ]
+        ]
+    },
+    {
+        "id": "9a5dd5dca69ddcc8",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "0d8880cccb2004b7": -0.6140727968998164,
+            "50b1fd62bbc6a4c6": 0.24591481256341918,
+            "d735558d636b6f9d": -0.892459470843869,
+            "817d23967665cd23": -0.8204543425442382,
+            "b3ba48bf7e8e4ced": -0.8491896759753587,
+            "e4c264a057850c7f": 0.9813530952951326
+        },
+        "actfunct": "Inverse",
+        "x": 1354,
+        "y": 626,
+        "wires": [
+            [
+                "899fab71fc7767b4",
+                "24e3b2c3c979f46a"
+            ]
+        ]
+    },
+    {
+        "id": "17bb1dcede9faa10",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "0d8880cccb2004b7": 0.8215818408323705,
+            "817d23967665cd23": -0.12283951166031759,
+            "b3ba48bf7e8e4ced": -0.7552033872791113,
+            "e4c264a057850c7f": -0.6257898202543881,
+            "50b1fd62bbc6a4c6": 0.5670883327302403,
+            "d735558d636b6f9d": -0.950188122806408
+        },
+        "actfunct": "ElliotSig",
+        "x": 1354,
+        "y": 692,
+        "wires": [
+            [
+                "899fab71fc7767b4",
+                "24e3b2c3c979f46a"
+            ]
+        ]
+    },
+    {
+        "id": "ad7f6d051b687234",
+        "type": "nnb-layer-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "",
+        "bias": "1",
+        "threshold": "0.0",
+        "weights": {
+            "0d8880cccb2004b7": 0.6831158231915705,
+            "50b1fd62bbc6a4c6": -0.9285111572490305,
+            "d735558d636b6f9d": -0.36500212967386225,
+            "817d23967665cd23": -0.7516747520650643,
+            "b3ba48bf7e8e4ced": 0.4652044065386797,
+            "e4c264a057850c7f": -0.0663880529936565
+        },
+        "actfunct": "Inverse",
+        "x": 1354,
+        "y": 561,
+        "wires": [
+            [
+                "899fab71fc7767b4",
+                "24e3b2c3c979f46a"
+            ]
+        ]
+    },
+    {
+        "id": "bae53332f5f2ad17",
+        "type": "nnb-input-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "Gender",
+        "x": 192,
+        "y": 408.00001743861617,
+        "wires": [
+            [
+                "e3efa26167dec45e",
+                "9b3b3c86bb4bc1bb",
+                "519c4315d03702ad",
+                "4bf6bcd18fb5cd9f"
+            ]
+        ]
+    },
+    {
+        "id": "c9d58a13955486c8",
+        "type": "nnb-input-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "Length",
+        "x": 202,
+        "y": 475.1428745814733,
+        "wires": [
+            [
+                "e3efa26167dec45e",
+                "9b3b3c86bb4bc1bb",
+                "519c4315d03702ad",
+                "4bf6bcd18fb5cd9f"
+            ]
+        ],
+        "info": "Sex,Length,Diameter,Height,Whole,Shucked,Viscera,Shell,Rings"
+    },
+    {
+        "id": "899fab71fc7767b4",
+        "type": "nnb-output-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "Rings",
+        "weights": {
+            "17bb1dcede9faa10": 0.8906608383171797,
+            "9a5dd5dca69ddcc8": -1,
+            "ad7f6d051b687234": -1
+        },
+        "x": 1634,
+        "y": 574,
+        "wires": [
+            [
+                "2d820d8b94a425fd"
+            ]
+        ]
+    },
+    {
+        "id": "2d820d8b94a425fd",
+        "type": "nnb-backprop",
+        "z": "0afa833f1084c333",
+        "name": "",
+        "scope": [
+            "899fab71fc7767b4",
+            "24e3b2c3c979f46a"
+        ],
+        "x": 1497,
+        "y": 220,
+        "wires": [
+            [
+                "875da1e5259eda6a"
+            ]
+        ]
+    },
+    {
+        "id": "875da1e5259eda6a",
+        "type": "nnb-trainer",
+        "z": "0afa833f1084c333",
+        "name": "",
+        "scope": [
+            "bae53332f5f2ad17",
+            "c9d58a13955486c8",
+            "44ee72b6e1213ba6",
+            "ce5d10f29e46f9ef",
+            "10109fb31198afb9",
+            "4618614714adaed0",
+            "85fc4a4d833c87c3",
+            "16f41f45b727e9ee"
+        ],
+        "learningrate": "0.01",
+        "weightmin": "-1",
+        "weightmax": "1",
+        "x": 1491,
+        "y": 38,
+        "wires": [
+            [
+                "5d2625c4843e3b53",
+                "2d820d8b94a425fd"
+            ]
+        ]
+    },
+    {
+        "id": "ca4c5393f4aede91",
+        "type": "csv",
+        "z": "0afa833f1084c333",
+        "name": "dataset - 4177 entries",
+        "sep": ",",
+        "hdrin": false,
+        "hdrout": "all",
+        "multi": "mult",
+        "ret": "\\n",
+        "temp": "Gender,Length,Diameter,Height,Whole,Shucked,Viscera,Shell,Rings",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 831,
+        "y": 249,
+        "wires": [
+            [
+                "4dfc1198196f0de2"
+            ]
+        ]
+    },
+    {
+        "id": "b485abb1a5504c62",
+        "type": "http request",
+        "z": "0afa833f1084c333",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 699,
+        "y": 173,
+        "wires": [
+            [
+                "ca4c5393f4aede91"
+            ]
+        ],
+        "info": "Details available here:\n\nhttps://archive.ics.uci.edu/ml/datasets/Abalone\n\nData:\n\nhttps://archive.ics.uci.edu/ml/machine-learning-databases/abalone/\n\n"
+    },
+    {
+        "id": "500652a2017b2e29",
+        "type": "inject",
+        "z": "0afa833f1084c333",
+        "name": "Starting training",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 577,
+        "y": 251,
+        "wires": [
+            [
+                "b485abb1a5504c62"
+            ]
+        ]
+    },
+    {
+        "id": "4dfc1198196f0de2",
+        "type": "function",
+        "z": "0afa833f1084c333",
+        "name": "remap gender & set topic",
+        "func": "var _sexMap = {\n    'M': 1,\n    'F': 2,\n    'I': 3\n};\n\nfor ( var idx = 0; idx < msg.payload.length ; idx++ ) {\n    msg.payload[idx].Gender = _sexMap[msg.payload[idx].Gender]\n}\n\nmsg.topic = \"dataset\";\n\n/* Dataset has 4177 values */\nmsg.training_size = 317;\nmsg.testing_size = 10;\n\nmsg.training_size = 10;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 979,
+        "y": 172,
+        "wires": [
+            [
+                "875da1e5259eda6a"
+            ]
+        ]
+    },
+    {
+        "id": "44ee72b6e1213ba6",
+        "type": "nnb-input-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "Diameter",
+        "x": 192,
+        "y": 542.2857317243304,
+        "wires": [
+            [
+                "e3efa26167dec45e",
+                "9b3b3c86bb4bc1bb",
+                "519c4315d03702ad",
+                "4bf6bcd18fb5cd9f"
+            ]
+        ]
+    },
+    {
+        "id": "ce5d10f29e46f9ef",
+        "type": "nnb-input-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "Height",
+        "x": 202,
+        "y": 609.4285888671875,
+        "wires": [
+            [
+                "9b3b3c86bb4bc1bb",
+                "e3efa26167dec45e",
+                "519c4315d03702ad",
+                "4bf6bcd18fb5cd9f"
+            ]
+        ]
+    },
+    {
+        "id": "10109fb31198afb9",
+        "type": "nnb-input-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "Whole",
+        "x": 202,
+        "y": 676.5714460100446,
+        "wires": [
+            [
+                "e3efa26167dec45e",
+                "9b3b3c86bb4bc1bb",
+                "519c4315d03702ad",
+                "4bf6bcd18fb5cd9f"
+            ]
+        ]
+    },
+    {
+        "id": "4618614714adaed0",
+        "type": "nnb-input-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "Shucked",
+        "x": 192,
+        "y": 743.7143031529017,
+        "wires": [
+            [
+                "e3efa26167dec45e",
+                "9b3b3c86bb4bc1bb",
+                "519c4315d03702ad",
+                "4bf6bcd18fb5cd9f"
+            ]
+        ]
+    },
+    {
+        "id": "85fc4a4d833c87c3",
+        "type": "nnb-input-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "Viscera",
+        "x": 192,
+        "y": 810.8571602957588,
+        "wires": [
+            [
+                "e3efa26167dec45e",
+                "9b3b3c86bb4bc1bb",
+                "519c4315d03702ad",
+                "4bf6bcd18fb5cd9f"
+            ]
+        ]
+    },
+    {
+        "id": "16f41f45b727e9ee",
+        "type": "nnb-input-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "Shell",
+        "x": 202,
+        "y": 878.0000174386162,
+        "wires": [
+            [
+                "e3efa26167dec45e",
+                "9b3b3c86bb4bc1bb",
+                "519c4315d03702ad",
+                "4bf6bcd18fb5cd9f"
+            ]
+        ]
+    },
+    {
+        "id": "24e3b2c3c979f46a",
+        "type": "nnb-output-node",
+        "z": "0afa833f1084c333",
+        "g": "fefbabb1dc935830",
+        "name": "Shell",
+        "weights": {
+            "17bb1dcede9faa10": 0.3111332905597384,
+            "9a5dd5dca69ddcc8": 1,
+            "ad7f6d051b687234": 1
+        },
+        "x": 1635,
+        "y": 675,
+        "wires": [
+            [
+                "2d820d8b94a425fd"
+            ]
+        ]
+    },
+    {
+        "id": "d2f3026b65b8fe3c",
+        "type": "debug",
+        "z": "0afa833f1084c333",
+        "name": "show test output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "values",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1722,
+        "y": 127,
+        "wires": []
+    },
+    {
+        "id": "5d2625c4843e3b53",
+        "type": "switch",
+        "z": "0afa833f1084c333",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "test-output",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1664,
+        "y": 38,
+        "wires": [
+            [
+                "d2f3026b65b8fe3c"
+            ]
+        ]
+    },
+    {
+        "id": "fbd1a59204a478ce",
+        "type": "inject",
+        "z": "0afa833f1084c333",
+        "name": "randomise weights",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "random-weights",
+        "x": 606,
+        "y": 39,
+        "wires": [
+            [
+                "875da1e5259eda6a"
+            ]
+        ]
+    }
+]

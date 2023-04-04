@@ -8,6 +8,31 @@
         "env": []
     },
     {
+        "id": "33e85d10192dce30",
+        "type": "group",
+        "z": "34dff9962b6572f6",
+        "name": "Artifcial Neural Network (ANN)",
+        "style": {
+            "label": true,
+            "label-position": "s"
+        },
+        "nodes": [
+            "232760b445acef87",
+            "34ad3ddc86cfb74b",
+            "e0ec19b8bb90dad1",
+            "46e624d6d4f1d0bc",
+            "30d4ccdc5ba2766c",
+            "a36718dcaf101c19",
+            "8d5fd29609d79b5a",
+            "90c0f7fdc23a7e5b",
+            "f478775b6ad2eb92"
+        ],
+        "x": 108,
+        "y": 473,
+        "w": 1023,
+        "h": 317
+    },
+    {
         "id": "d887e4a6d16c0d1e",
         "type": "comment",
         "z": "34dff9962b6572f6",
@@ -105,8 +130,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1068,
-        "y": 247,
+        "x": 982,
+        "y": 196,
         "wires": [
             [
                 "a8a8262399bb5508"
@@ -139,8 +164,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1330,
-        "y": 188.33331298828125,
+        "x": 1087,
+        "y": 267.33331298828125,
         "wires": [
             [
                 "fa90305f76aa8466"
@@ -151,9 +176,10 @@
         "id": "232760b445acef87",
         "type": "nnb-input-node",
         "z": "34dff9962b6572f6",
+        "g": "33e85d10192dce30",
         "name": "LeftWeight",
-        "x": 418,
-        "y": 559,
+        "x": 224,
+        "y": 514,
         "wires": [
             [
                 "30d4ccdc5ba2766c",
@@ -166,9 +192,10 @@
         "id": "34ad3ddc86cfb74b",
         "type": "nnb-input-node",
         "z": "34dff9962b6572f6",
+        "g": "33e85d10192dce30",
         "name": "RightWeight",
-        "x": 418,
-        "y": 635,
+        "x": 224,
+        "y": 590,
         "wires": [
             [
                 "30d4ccdc5ba2766c",
@@ -181,9 +208,10 @@
         "id": "e0ec19b8bb90dad1",
         "type": "nnb-input-node",
         "z": "34dff9962b6572f6",
+        "g": "33e85d10192dce30",
         "name": "LeftDistance",
-        "x": 418,
-        "y": 709,
+        "x": 224,
+        "y": 664,
         "wires": [
             [
                 "30d4ccdc5ba2766c",
@@ -196,9 +224,10 @@
         "id": "46e624d6d4f1d0bc",
         "type": "nnb-input-node",
         "z": "34dff9962b6572f6",
+        "g": "33e85d10192dce30",
         "name": "RightDistance",
-        "x": 408,
-        "y": 786,
+        "x": 214,
+        "y": 741,
         "wires": [
             [
                 "30d4ccdc5ba2766c",
@@ -211,18 +240,19 @@
         "id": "30d4ccdc5ba2766c",
         "type": "nnb-layer-node",
         "z": "34dff9962b6572f6",
+        "g": "33e85d10192dce30",
         "name": "",
         "bias": 0,
         "threshold": "-3",
         "weights": {
-            "232760b445acef87": 0.353240680186266,
-            "34ad3ddc86cfb74b": -0.20025297753485893,
-            "e0ec19b8bb90dad1": -0.41900557166532515,
-            "46e624d6d4f1d0bc": 0.27112074075593773
+            "232760b445acef87": 0.04907153684374577,
+            "34ad3ddc86cfb74b": 0.3893954289056374,
+            "e0ec19b8bb90dad1": -0.4783156613453521,
+            "46e624d6d4f1d0bc": 0.34263815804502396
         },
         "actfunct": "Erf",
-        "x": 714,
-        "y": 657,
+        "x": 502,
+        "y": 627,
         "wires": [
             [
                 "8d5fd29609d79b5a",
@@ -234,18 +264,19 @@
         "id": "a36718dcaf101c19",
         "type": "nnb-layer-node",
         "z": "34dff9962b6572f6",
+        "g": "33e85d10192dce30",
         "name": "",
         "bias": 0,
         "threshold": "-3",
         "weights": {
-            "34ad3ddc86cfb74b": -0.41696979633711506,
-            "232760b445acef87": -0.48219647009219613,
-            "e0ec19b8bb90dad1": -0.03370482913916706,
-            "46e624d6d4f1d0bc": 0.08060431048968719
+            "34ad3ddc86cfb74b": 0.038837580299953434,
+            "232760b445acef87": -0.11387590277565374,
+            "e0ec19b8bb90dad1": 0.3671164767936883,
+            "46e624d6d4f1d0bc": 0.08523604359691905
         },
         "actfunct": "BentIdentity",
-        "x": 744,
-        "y": 732,
+        "x": 524,
+        "y": 693,
         "wires": [
             [
                 "8d5fd29609d79b5a",
@@ -257,15 +288,16 @@
         "id": "8d5fd29609d79b5a",
         "type": "nnb-output-node",
         "z": "34dff9962b6572f6",
+        "g": "33e85d10192dce30",
         "name": "ClassName",
         "weights": {
-            "a36718dcaf101c19": -0.43776638637215215,
-            "30d4ccdc5ba2766c": -0.45895053395755947,
+            "a36718dcaf101c19": -0.378428004240595,
+            "30d4ccdc5ba2766c": -0.138279656095462,
             "90c0f7fdc23a7e5b": 2,
-            "f478775b6ad2eb92": 0.2981832964451465
+            "f478775b6ad2eb92": 0.3357201323215342
         },
-        "x": 1284,
-        "y": 663,
+        "x": 1035,
+        "y": 632,
         "wires": [
             [
                 "c56bc1ef5fddc752"
@@ -280,8 +312,8 @@
         "scope": [
             "8d5fd29609d79b5a"
         ],
-        "x": 1571,
-        "y": 430,
+        "x": 1294,
+        "y": 443,
         "wires": [
             [
                 "fa90305f76aa8466"
@@ -302,8 +334,8 @@
         "learningrate": "0.01",
         "weightmin": "-0.5",
         "weightmax": "0.5",
-        "x": 1570,
-        "y": 289,
+        "x": 1290,
+        "y": 353,
         "wires": [
             [
                 "c56bc1ef5fddc752",
@@ -327,8 +359,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "random-weights",
-        "x": 863,
-        "y": 364,
+        "x": 224,
+        "y": 358,
         "wires": [
             [
                 "fa90305f76aa8466"
@@ -348,8 +380,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1872,
-        "y": 157,
+        "x": 1520,
+        "y": 186,
         "wires": []
     },
     {
@@ -369,8 +401,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 1,
-        "x": 1646,
-        "y": 157,
+        "x": 1328,
+        "y": 188,
         "wires": [
             [
                 "7760d99cd046f7a9"
@@ -381,18 +413,19 @@
         "id": "90c0f7fdc23a7e5b",
         "type": "nnb-layer-node",
         "z": "34dff9962b6572f6",
+        "g": "33e85d10192dce30",
         "name": "",
         "bias": 0,
         "threshold": 0,
         "weights": {
-            "232760b445acef87": 0.01744287067087802,
-            "34ad3ddc86cfb74b": -0.1078608684648863,
-            "e0ec19b8bb90dad1": -0.35729411029712055,
-            "46e624d6d4f1d0bc": 0.19912850208005017
+            "232760b445acef87": 0.09078334229144769,
+            "34ad3ddc86cfb74b": 0.12137813772499095,
+            "e0ec19b8bb90dad1": 0.2899143407574285,
+            "46e624d6d4f1d0bc": -0.3238874114159891
         },
         "actfunct": "Gaussian",
-        "x": 734,
-        "y": 583,
+        "x": 523,
+        "y": 558,
         "wires": [
             [
                 "f478775b6ad2eb92"
@@ -403,17 +436,18 @@
         "id": "f478775b6ad2eb92",
         "type": "nnb-layer-node",
         "z": "34dff9962b6572f6",
+        "g": "33e85d10192dce30",
         "name": "",
         "bias": 0,
         "threshold": "-3",
         "weights": {
-            "30d4ccdc5ba2766c": 0.20519579346756744,
-            "a36718dcaf101c19": 0.10499884599998777,
-            "90c0f7fdc23a7e5b": 0.03753312304127232
+            "30d4ccdc5ba2766c": -0.11450028613517782,
+            "a36718dcaf101c19": 0.16085082108577842,
+            "90c0f7fdc23a7e5b": 0.07741503058879817
         },
         "actfunct": "Identity",
-        "x": 1026,
-        "y": 584,
+        "x": 825,
+        "y": 569,
         "wires": [
             [
                 "8d5fd29609d79b5a"
