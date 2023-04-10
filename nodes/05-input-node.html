@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  RED.nodes.registerType('nnb-input-node',{ ...window.mmDefaults, ...{
+  RED.nodes.registerType('nnb-input-node', nnb_defaults_hash({
     color: '#ffefef',
     icon: "subflow.svg",
     paletteLabel: "Input",
@@ -11,7 +11,13 @@
     label: function() {
       return (this.name || this._def.paletteLabel);
     },
-  }});
+    labelStyle:    nbb_labelStyle,
+    oneditsave:    nnb_oneditsave,
+    oneditcancel:  nnb_oneditcancel,
+    oneditdelete:  nnb_oneditdelete,
+    oneditresize:  nnb_oneditresize,
+    oneditprepare: nnb_oneditprepare
+  }));
 </script>
 
 <script type="text/html" data-template-name="nnb-input-node">

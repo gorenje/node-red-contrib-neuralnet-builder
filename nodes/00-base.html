@@ -1,5 +1,7 @@
 <script type="text/javascript">
-  window.mmDefaults = {
+
+function nnb_defaults_hash(hsh) {
+  return { ...{
     category: 'Neural Net',
     defaults: {
       name: {
@@ -13,148 +15,150 @@
       }
     },
     inputs:1,
-    outputs:1,
+    outputs:1
+  }, ...hsh }
+};
 
-    labelStyle: function() {
-      /*
-        because there is not a better hook to connect up the event
-        listener, misuse the label styling for this. Also don't register a
-        new listener each time, maintain only one listener by removing and
-        readding.
-      */
-      var that = this;
-      var functName = "neuralnet:" + that.id;
+function nbb_labelStyle() {
+  /*
+    because there is not a better hook to connect up the event
+    listener, misuse the label styling for this. Also don't register a
+    new listener each time, maintain only one listener by removing and
+    readding.
+  */
+  var that = this;
+  var functName = "neuralnet:" + that.id;
 
-      if ( !window[functName] ) {
-        window[functName] = (e,m) => {
-          if ( m.msg == "weight-change" && RED.nodes.node(m.node) ) {
-            (RED.nodes.node(m.node).weights ||= {})[ m.to ] = m.weight;
+  if ( !window[functName] ) {
+    window[functName] = (e,m) => {
+      if ( m.msg == "weight-change" && RED.nodes.node(m.node) ) {
+        (RED.nodes.node(m.node).weights ||= {})[ m.to ] = m.weight;
 
+        if ( that.treeList ) {
+          that.treeList.treeList('data',that.generateTreeListData());
+          setTimeout(function() {
             if ( that.treeList ) {
-              that.treeList.treeList('data',that.generateTreeListData());
-              setTimeout(function() {
-                if ( that.treeList ) {
-                  that.treeList.treeList('show',that.id);
-                }
-              },100);
+              that.treeList.treeList('show',that.id);
             }
-          }
+          },100);
         }
       }
+    }
+  }
 
-      RED.comms.unsubscribe("neuralnet:"+this.id, window[functName]);
-      RED.comms.subscribe("neuralnet:"+this.id, window[functName] );
+  RED.comms.unsubscribe("neuralnet:"+this.id, window[functName]);
+  RED.comms.subscribe("neuralnet:"+this.id, window[functName] );
 
-      return this.name ? "node_label_italic":"";
-    },
+  return this.name ? "node_label_italic":"";
+};
 
-    oneditsave: function() {
-      var that = this;
-      that.treeList = null;
-    },
+function nnb_oneditsave() {
+  var that = this;
+  that.treeList = null;
+};
 
-    oneditcancel: function() {
-      var that = this;
-      that.treeList = null;
-    },
+function nnb_oneditcancel() {
+  var that = this;
+  that.treeList = null;
+};
 
-    oneditdelete:  function() {
-      var that = this;
-      that.treeList = null;
-    },
+function nnb_oneditdelete() {
+  var that = this;
+  that.treeList = null;
+};
 
-    oneditresize: () => {
-      var rows = $("#dialog-form>div:not(.node-input-weights-row)");
-      var height = $("#dialog-form").height();
-      for (var i=0;i<rows.length;i++) {
-        height -= $(rows[i]).outerHeight(true);
-      }
-      var editorRow = $("#dialog-form>div.node-input-weights-row");
-      height -= (parseInt(editorRow.css("marginTop"))+parseInt(editorRow.css("marginBottom")));
-      $(".node-input-weights-row").css("height",height+"px");
-    },
+function nnb_oneditresize() {
+  var rows = $("#dialog-form>div:not(.node-input-weights-row)");
+  var height = $("#dialog-form").height();
+  for (var i=0;i<rows.length;i++) {
+    height -= $(rows[i]).outerHeight(true);
+  }
+  var editorRow = $("#dialog-form>div.node-input-weights-row");
+  height -= (parseInt(editorRow.css("marginTop"))+parseInt(editorRow.css("marginBottom")));
+  $(".node-input-weights-row").css("height",height+"px");
+};
 
-    oneditprepare: function() {
-      var that = this;
+function nnb_oneditprepare() {
+  var that = this;
 
-      if ( that.type == "nbb-input-node" ) { return; }
+  if ( that.type == "nbb-input-node" ) { return; }
 
-      $("#node-input-bias").typedInput({
-        type:"num",
-        types:["num"],
-        typeField: "#node-input-bias-type"
-      });
+  $("#node-input-bias").typedInput({
+    type:"num",
+    types:["num"],
+    typeField: "#node-input-bias-type"
+  });
 
-      $("#node-input-threshold").typedInput({
-        type:"num",
-        types:["num"],
-        typeField: "#node-input-bias-type"
-      });
+  $("#node-input-threshold").typedInput({
+    type:"num",
+    types:["num"],
+    typeField: "#node-input-bias-type"
+  });
 
-      if ( !that.generateTreeListData ) {
-        that.generateTreeListData = function() {
-          var possibleTypes = ["nnb-input-node", "nnb-output-node",
-                               "nnb-layer-node"];
-          var inLinks = [
-            {
-              label: 'Connection Weights',
-              icon: 'fa fa-link',
-              class: 'red-ui-palette-header',
+  if ( !that.generateTreeListData ) {
+    that.generateTreeListData = function() {
+      var possibleTypes = ["nnb-input-node", "nnb-output-node",
+                           "nnb-layer-node"];
+      var inLinks = [
+        {
+          label: 'Connection Weights',
+          icon: 'fa fa-link',
+          class: 'red-ui-palette-header',
+          checkbox: false,
+          radio: false,
+          expanded: true,
+          id: that.id,
+          children: [
+          ]
+        }
+      ];
+
+      RED.nodes.eachNode( function(n) {
+        RED.nodes.getNodeLinks(n).forEach(function(l) {
+          if ( l.target.id == that.id && possibleTypes.indexOf(l.source.type) > -1 ) {
+            inLinks[0].children.push( {
+              id: l.source.id,
+              node: RED.nodes.node(l.source.id),
+              label: (
+                (l.source.name || l.source.actfunct || l.source._def.paletteLabel) +
+                  (l.source.bias ? (": " + l.source.bias) : " - ") +
+                  " Weight: " + ( (that.weights||{})[l.source.id] || "1")
+              ),
+              selected: false,
               checkbox: false,
-              radio: false,
-              expanded: true,
-              id: that.id,
-              children: [
-              ]
-            }
-          ];
-
-          RED.nodes.eachNode( function(n) {
-            RED.nodes.getNodeLinks(n).forEach(function(l) {
-              if ( l.target.id == that.id && possibleTypes.indexOf(l.source.type) > -1 ) {
-                inLinks[0].children.push( {
-                  id: l.source.id,
-                  node: RED.nodes.node(l.source.id),
-                  label: (
-                    (l.source.name || l.source.actfunct || l.source._def.paletteLabel) +
-                      (l.source.bias ? (": " + l.source.bias) : " - ") +
-                      " Weight: " + ( (that.weights||{})[l.source.id] || "1")
-                  ),
-                  selected: false,
-                  checkbox: false,
-                  radio: false
-                })
-              }
+              radio: false
             })
-          });
-          return inLinks
-        };
+          }
+        })
+      });
+      return inLinks
+    };
+  }
+
+  that.treeList = $("<div>")
+    .css({width: "100%", height: "100%"})
+    .appendTo(".node-input-weights-row")
+    .treeList({autoSelect:false})
+    .on('treelistitemmouseover',function(e,item) {
+      if (item.node) {
+        item.node.highlighted = true;
+        item.node.dirty = true;
+        RED.view.redraw();
       }
+    })
+    .on('treelistitemmouseout',function(e,item) {
+      if (item.node) {
+        item.node.highlighted = false;
+        item.node.dirty = true;
+        RED.view.redraw();
+      }
+    });
 
-      that.treeList = $("<div>")
-            .css({width: "100%", height: "100%"})
-            .appendTo(".node-input-weights-row")
-            .treeList({autoSelect:false})
-            .on('treelistitemmouseover',function(e,item) {
-                if (item.node) {
-                    item.node.highlighted = true;
-                    item.node.dirty = true;
-                    RED.view.redraw();
-                }
-            })
-            .on('treelistitemmouseout',function(e,item) {
-                if (item.node) {
-                    item.node.highlighted = false;
-                    item.node.dirty = true;
-                    RED.view.redraw();
-                }
-            });
+  that.treeList.treeList('data',that.generateTreeListData());
+  that.treeList.treeList("filter", null);
+  setTimeout(function() {
+    that.treeList.treeList('show',that.id);
+  },100);
+};
 
-      that.treeList.treeList('data',that.generateTreeListData());
-      that.treeList.treeList("filter", null);
-      setTimeout(function() {
-        that.treeList.treeList('show',that.id);
-      },100);
-    },
-  };
 </script>
