@@ -7,9 +7,9 @@
   "homepage": "https://github.com/gorenje/node-red-contrib-neuralnet-builder#README.md",
   "license": "SEE LICENSE IN https://github.com/gorenje/node-red-contrib-neuralnet-builder#LICENSE",
   "author": "Gerrit Riessen <nodered@spreads-the.love> (https://spread-the.love)",
-	"engines": {
-		"node": ">=16"
-	},
+  "engines": {
+    "node": ">=16"
+  },
   "node-red": {
     "version": ">=2.0.0",
     "nodes": {
