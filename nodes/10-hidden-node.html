@@ -1,5 +1,6 @@
 <script type="text/javascript">
-  RED.nodes.registerType('nnb-layer-node', nnb_defaults_hash({
+  RED.nodes.registerType('nnb-layer-node', {
+    category: 'Neural Net',
     color: '#ffffef',
     icon: "subflow.svg",
     paletteLabel: 'Hidden',
@@ -22,9 +23,13 @@
         value: "Identity"
       }
     },
+    inputs:1,
+    outputs:1,
+
     label: function() {
       return (this.name || this.actfunct || this._def.paletteLabel) + ": " + (this.bias || "0") + ", " + (this.threshold || "0");
     },
+
     labelStyle:    nbb_labelStyle,
     oneditsave:    nnb_oneditsave,
     oneditcancel:  nnb_oneditcancel,
@@ -32,7 +37,7 @@
     oneditresize:  nnb_oneditresize,
     oneditprepare: nnb_oneditprepare
 
-  }));
+  });
 </script>
 
 <script type="text/html" data-template-name="nnb-layer-node">

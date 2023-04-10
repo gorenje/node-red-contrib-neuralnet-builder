@@ -1,5 +1,6 @@
 <script type="text/javascript">
-  RED.nodes.registerType('nnb-output-node',  nnb_defaults_hash({
+  RED.nodes.registerType('nnb-output-node', {
+    category: 'Neural Net',
     color: '#efefef',
     icon: "subflow.svg",
     paletteLabel: 'Output',
@@ -11,6 +12,8 @@
         value: {}
       }
     },
+    inputs:1,
+    outputs:1,
 
     label: function() {
       return (this.name || this._def.paletteLabel);
@@ -22,7 +25,7 @@
     oneditdelete:  nnb_oneditdelete,
     oneditresize:  nnb_oneditresize,
     oneditprepare: nnb_oneditprepare
-  }));
+  });
 </script>
 
 <script type="text/html" data-template-name="nnb-output-node">
