@@ -2,7 +2,7 @@
   "name": "@gregoriusrippenstein/node-red-contrib-neuralnet-builder",
   "version": "0.0.6",
   "keywords": [
-    "node-red"
+    "node-red", "artificial neural networks", "ANN"
   ],
   "homepage": "https://github.com/gorenje/node-red-contrib-neuralnet-builder#README.md",
   "license": "SEE LICENSE IN https://github.com/gorenje/node-red-contrib-neuralnet-builder#LICENSE",
