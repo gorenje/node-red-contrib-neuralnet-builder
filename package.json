@@ -4,7 +4,7 @@
   "keywords": [
     "node-red", "artificial neural networks", "ANN"
   ],
-  "homepage": "https://github.com/gorenje/node-red-contrib-neuralnet-builder#README.md",
+  "homepage": "https://flowhub.org/f/f7e009091ef2d6b0",
   "license": "SEE LICENSE IN https://github.com/gorenje/node-red-contrib-neuralnet-builder#LICENSE",
   "author": "Gerrit Riessen <nodered@spreads-the.love> (https://spread-the.love)",
   "engines": {
